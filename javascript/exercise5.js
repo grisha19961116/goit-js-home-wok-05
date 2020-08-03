@@ -1,77 +1,61 @@
 // Завдання 5
-// Напиши функцію getAllPropValues(arr, prop), яка отримує масив об'єктів і ім'я властивості.
-//  Повертає масив значень певної властивості prop з кожного об'єкта в масиві.
-const products = [
-  { name: 'Радар', price: 1300, quantity: 4 },
-  { name: 'Сканер', price: 2700, quantity: 3 },
-  { name: 'Дроїд', price: 400, quantity: 7 },
-  { name: 'Захоплення', price: 1200, quantity: 2 },
-];
-// first solution which you have tiped for me,thanks know i recocnize main idia how to do it righ!)
-const getAllPropVal = function(arr, prop) {
-const total = [];
-for (const item of arr) {
-if (item[prop]){
-total.push(item[prop]);
-}
-}
-return total;
-};
-console.log(getAllPropVal(products, 'name')); // ['Радар', 'Сканер', 'Дроїд', 'Захоплення']
-console.log(getAllPropVal(products, 'price'));
-console.log(getAllPropVal(products, 'quantity')); // [4, 3, 7, 2]
-console.log(getAllPropVal(products, 'category')); // []
-// third solution
-const getAllPropValue = function (arr,prop) {
-    let total =[];
-    for(const i of arr){
-        for(let j in i){
-            if(j = prop){
-                total.push(i[j]);
-                break;
-            } 
-        }
+// Напиши клас Car із зазначеними властивостями і методами.
+
+class Car {
+  constructor({maxSpeed,speed = 0,isOn = false,distance = 0,price}) {
+    this.speed = speed;
+    this._price = price;
+    this.maxSpeed = maxSpeed;
+    this.isOn = isOn;
+    this.distance = distance;
+  }
+  get price(){
+    return this._price;
+  }
+  set price(value){
+    return this._price = value;
+  }
+  turnOn() {
+    return this.isOn = true;
+  }
+  turnOff() {
+    this.isOn = false;
+    this.speed = 0;
+  }
+  accelerate(value) {
+    if(this.speed <= this.maxSpeed){
+      this.speed = this.speed + value;
     }
-        return total;
-  };
-console.log(getAllPropValue(products, 'name')); // ['Радар', 'Сканер', 'Дроїд', 'Захоплення']
-console.log(getAllPropValue(products, 'price'));
-console.log(getAllPropValue(products, 'quantity')); // [4, 3, 7, 2]
-console.log(getAllPropValue(products, 'category')); // []
-// second solution
-// Задача 5 )
-// function getAllPropValues(arr, prop) {
-// return arr.map(element => element[prop]);
-// }
-// так мы еще не умеем )))
-// 5) Клик о помощи кидай мне в личку а не в комменты на гид хаб ))) но все ще:
-// const getAllPropValues = function(arr, prop) {
-// const arrProp = [];
-// for (const item of arr) {
-// if (item[prop]){
-// arrProp.push(item[prop]);
-// }
-// }
-// return arrProp;
-// };
-// только разбери это решение, я дам подобную задачку.
-// Все остальное, кулл! Правь 1,2,5 - и перезаливай на проверочку.
-const subjects = [
-    { name: 'Радар', price: 1300, quantity: 4 },
-    { name: 'Сканер', price: 2700, quantity: 3 },
-    { name: 'Дроїд', price: 400, quantity: 7 },
-    { name: 'Захоплення', price: 1200, quantity: 2 },
-    { name: 'eagl', price: 1800, quantity: 1 },
-    { name: 'fox', price: 1400, quantity: 6 },
-    { name: 'biard', price: 2050, quantity: 4 }
-  ];
-
-function getAllPropValues(arr, prop) {
-  return arr.map(element => element[prop]);
+  }
+  decelerate(value) {
+    if(this.speed > 0){
+      this.speed = this.speed - value;
+    }
+  }
+  drive(hours) {
+    if(this.isOn === true){
+      this.distance += this.speed*hours;
+    }
+  }
 }
-console.log(getAllPropValues(subjects, 'name')); // ["Радар", "Сканер", "Дроїд", "Захоплення", "eagl", "fox", "biard"]
-console.log(getAllPropValues(subjects, 'price'));
-console.log(getAllPropValues(subjects, 'quantity')); // [4, 3, 7, 2, 1, 6, 4]
-console.log(getAllPropValues(subjects, 'category')); // []
+const mustang = new Car({ maxSpeed: 200, price: 2000 });
 
+mustang.turnOn();
+mustang.accelerate(50);
+mustang.drive(2);
 
+console.log(mustang)
+// maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
+mustang.decelerate(20);
+mustang.drive(1);
+mustang.turnOff();
+
+console.log(mustang.price); // 2000
+
+mustang.price = 4000;
+console.log(mustang)
+// maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 4000
+console.log(mustang.price); // 4000
+
+const ferari = new Car ({maxSpeed:360,price:200000,isOn:true,speed:235,distance:1500})
+console.log(ferari);
