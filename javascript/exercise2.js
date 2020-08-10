@@ -32,6 +32,3 @@ const poly = new User({
 });
 
 poly.getInfo(); // User Poly is 3 years old and has 17 followers
-
-
-
