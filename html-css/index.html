@@ -14,3 +14,28 @@
  <!-- <script src="../javascript/exercise4.js" type="module"></script>  -->
   <script src="../javascript/exercise5.js" type="module"></script>
 </html>
+<!-- Все идеально кроме
+
+accelerate(value) {
+if(this.speed <= this.maxSpeed){
+this.speed = this.speed + value;
+}
+}
+decelerate(value) {
+if(this.speed > 0){
+this.speed = this.speed - value;
+}
+}
+
+синтаксически все правильно но например если текущая скорость 200 а максимальная 220, 
+мы сделаем разгон на 100
+
+то у Тебя
+if(this.speed <= this.maxSpeed){
+this.speed = this.speed + value;
+}
+(200 <=220)=>{
+this.speed = 200 + 100
+}
+
+и того текущая скорость 300 а это больше чем 220 - а это нарушает условие задачи.... -->

@@ -25,6 +25,9 @@ class Car {
   accelerate(value) {
     if(this.speed <= this.maxSpeed){
       this.speed = this.speed + value;
+      if(this.speed >= this.maxSpeed){
+        return this.speed = `it's more then speed limit!!!`;
+      }
     }
   }
   decelerate(value) {
@@ -41,7 +44,7 @@ class Car {
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
 
 mustang.turnOn();
-mustang.accelerate(50);
+mustang.accelerate(120);
 mustang.drive(2);
 
 console.log(mustang)
@@ -54,6 +57,17 @@ console.log(mustang.price); // 2000
 
 mustang.price = 4000;
 console.log(mustang)
+
+mustang.turnOn();
+mustang.accelerate(99);
+mustang.drive(2);
+console.log(mustang)
+
+mustang.turnOn();
+mustang.accelerate(120);
+mustang.drive(2);
+console.log(mustang)
+
 // maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 4000
 console.log(mustang.price); // 4000
 
