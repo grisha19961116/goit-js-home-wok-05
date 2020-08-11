@@ -23,17 +23,18 @@ class Car {
     this.speed = 0;
   }
   accelerate(value) {
-    if(this.speed <= this.maxSpeed){
-      this.speed = this.speed + value;
-      if(this.speed >= this.maxSpeed){
-        return this.speed = `it's more then speed limit!!!`;
-      }
+    if((this.speed+value) <= this.maxSpeed){
+      this.speed +=value;
+    } else if((this.speed+value) >= this.maxSpeed){
+      return console.error(this.speed,`it's more then speed limit!!!`);
     }
   }
   decelerate(value) {
-    if(this.speed > 0){
+      if((this.speed - value) >= 0){
       this.speed = this.speed - value;
-    }
+      } else if((this.speed - value) <= 0){
+        return console.error(this.speed,`you can't reduce because resalt will be less then 0!res < 0`);
+      }
   }
   drive(hours) {
     if(this.isOn === true){
@@ -44,12 +45,17 @@ class Car {
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
 
 mustang.turnOn();
-mustang.accelerate(120);
+mustang.accelerate(136);
+mustang.decelerate(36);   //in this case decelerate is work speed is 100 km per ahour
 mustang.drive(2);
-
 console.log(mustang)
+
+mustang.accelerate(60);
+mustang.decelerate(180);  //in this case decelerate is not work!!!and in console we will have attention
+mustang.drive(1);
+console.log(mustang)
+
 // maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
-mustang.decelerate(20);
 mustang.drive(1);
 mustang.turnOff();
 
@@ -59,13 +65,25 @@ mustang.price = 4000;
 console.log(mustang)
 
 mustang.turnOn();
-mustang.accelerate(99);
+mustang.accelerate(25); //25 km per a hour
 mustang.drive(2);
 console.log(mustang)
 
 mustang.turnOn();
-mustang.accelerate(120);
+mustang.accelerate(50);  //75 km per a hour
 mustang.drive(2);
+console.log(mustang)
+
+mustang.accelerate(100); //175 km per a hour
+console.log(mustang)
+
+mustang.accelerate(50);
+//  // error and valu accelerate will not add new value and
+//  it will have prevelios meaning 175 km per a hour
+console.log(mustang)
+
+mustang.accelerate(25); //and this case we are continue and add new value for amount 
+// accelerate beffore error  (175 km + 25) = 200 km per a hour
 console.log(mustang)
 
 // maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 4000
