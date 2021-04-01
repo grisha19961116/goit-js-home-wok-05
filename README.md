@@ -1,1 +1,1 @@
-# goit-fe-course
+# goit-fe-course homework javascript 5

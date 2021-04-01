@@ -1,36 +1,32 @@
-// Завдання 4
-// Напиши клас StringBuilder. На вхід він отримує один 
-// параметр - рядок, який записує у властивість _value.
-
-// Додай класу наступний функціонал:
-
-// Геттер value - повертає поточне значення поля _value
-// Метод append(str) - отримує параметр str (рядок) і додає його в кінець _value
-// Метод prepend(str) - отримує параметр str (рядок) і додає його на початок _value
-// Метод pad(str) - отримує параметр str (рядок) і додає його на початок і в кінець _value
+// Exercise 4
+// Write class StringBuilder. On start will get one parameter 'row' which put into properties _alue
+// Add for class next functional :
+// Geterr value - return current value of _value
+// Method append(str)  get parameter str(row) and add it into the end
+// Method prepend(str) -   get parameter str(row) and add it into the start value
+// Method pad(str) -  get parameter str(row) and add it into the start and end value
 class StringBuilder {
-  constructor(value){
+  constructor(value) {
     this.value = value;
   }
-  append(str){
-    this.value = this.value + str ;
+  append(str) {
+    this.value = this.value + str;
   }
-  prepend(str){
+  prepend(str) {
     this.value = str + this.value;
   }
-  pad(str){
+  pad(str) {
     this.value = str + this.value + str;
-    
   }
-  return 
+  return;
 }
-const builder = new StringBuilder('.');
+const builder = new StringBuilder(".");
 
-builder.append('^');
+builder.append("^");
 console.log(`'${builder.value}'`); // '.^'
 
-builder.prepend('^');
+builder.prepend("^");
 console.log(`'${builder.value}'`); // '^.^'
 
-builder.pad('=');
+builder.pad("=");
 console.log(`'${builder.value}'`); // '=^.^='
